@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  
+   config.vm.box = "pbarriscale/centos7-gui"
+   config.vm.box_version = "1.0.0"
+   
+   config.ssh.insert_key = false
+  
+   config.vm.provision :chef_solo do |chef|
+      chef.roles_path = "../../roles"
+      chef.cookbooks_path = "../../cookbooks"
+      chef.add_role("lw_dev_box")	
+   end
+   
+   config.vm.provider "virtualbox" do |v|
+      v.gui = true
+   end
+   
+end
+  
