@@ -1,37 +1,45 @@
 {
-   "name": "lw-dev-box",
-   "description": "A role to configure our lightweight dev boxes",
+	"name": "lw-dev-box",
+	"description": "A role to configure our lightweight dev boxes",
+	
+	"json_class": "Chef::Role",
+	
+	"override_attributes": 
+	{
+		"npm":
+		{
+			"version":"v4.5.0",
+			"packages":
+			[
+				"yo",
+				"grunt-cli",
+				"bower",
+				"mocha",
+				"jshint",
+				"jslint",
+				"phantomjs-prebuilt",
+				"jasmine-node"                    
+			]
+		},
+		"ide":
+		{
+			"intellij":
+			{
+				"version": "2016.2.1"
+			}
+		},
+		"chrome": 
+		{
+			"yum_baseurl": "http://dl.google.com/linux/chrome/rpm/stable/$basearch",
+			"yum_gpgkey":  "https://dl-ssl.google.com/linux/linux_signing_key.pub",
+			"track": "stable"
+		}
+	},
    
-   "json_class": "Chef::Role",
-   
-   "override_attributes": 
-   {
-      "npm":
-      {
-         "version":"v0.12.0",
-	 "packages":
-	 [
-            "yo",
-            "grunt-cli",
-            "bower",
-            "mocha",
-            "jshint",
-            "jslint",
-            "phantomjs-prebuilt",
-            "jasmine-node"                    
-         ]
-      },
-      "ide":
-      {
-         "intellij":
-	 {
-	    "version": "2016.2.1"
-	 }
-      }
-   },
-   
-   "run_list": [
-      "recipe[npm::default]",
-      "recipe[ide::intellij]"
-   ]
+	"run_list": 
+	[
+		"recipe[npm::default]",
+		"recipe[ide::webstorm]",
+		"recipe[browser::chrome]"
+	]
 }

@@ -1,0 +1,2 @@
+name 'browser'
+depends 'yum'

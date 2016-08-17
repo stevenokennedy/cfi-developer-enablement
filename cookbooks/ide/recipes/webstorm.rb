@@ -4,8 +4,8 @@
 version = node[:ide][:intellij][:version]
 
 #download and extract intellij
-remote_file '/home/vagrant/ideaIC.tar.gz' do
-  source 'https://data.services.jetbrains.com/products/download?code=IIC&platform=linux'
+remote_file '/home/vagrant/WebStorm.tar.gz' do
+  source 'https://download.jetbrains.com/webstorm/WebStorm-2016.2.1.tar.gz'
   owner 'vagrant'
   group 'vagrant'
   mode '0755'
@@ -16,15 +16,15 @@ bash "install_ide" do
    user "vagrant"
    cwd "/home/vagrant"
    code <<-EOH
-      mkdir ideaIC
-      tar xzf ideaIC.tar.gz -C ideaIC --strip-components 1
+      mkdir WebStorm
+      tar xzf WebStorm.tar.gz -C WebStorm --strip-components 1
   EOH
 end
 
    
 
 #create a shortcut file on the desktop
-file "/home/vagrant/Desktop/Intellij.desktop" do
+file "/home/vagrant/Desktop/WebStorm.desktop" do
    content <<-SHORTCUT
       #!/usr/bin/env xdg-open
  
@@ -32,10 +32,10 @@ file "/home/vagrant/Desktop/Intellij.desktop" do
       Version=1.0
       Type=Application
       Terminal=false
-      Exec=/home/vagrant/ideaIC/bin/idea.sh
-      Name=Intellij
-      Comment=comment here
-      Icon=/home/vagrant/ideaIC/bin/idea.png
+      Exec=/home/vagrant/WebStorm/bin/webstorm.sh
+      Name=WebStorm
+      Comment=Webstorm IDE
+      Icon=/home/vagrant/WebStorm/bin/webstorm.svg
    SHORTCUT
    mode 0700
    owner 'vagrant'
