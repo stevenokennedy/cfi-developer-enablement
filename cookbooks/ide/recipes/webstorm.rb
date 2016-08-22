@@ -42,3 +42,14 @@ file "/home/vagrant/Desktop/WebStorm.desktop" do
    group 'vagrant'
 end
 
+#Set the git username and email address so IDE integration works
+bash "set_git_names" do
+   user "vagrant"
+   group "vagrant"
+   code <<-EOH
+      HOME=/home/vagrant
+      git config --global user.name "TestName"
+      git config --global user.email "TestEmail@email.com"
+   EOH
+end
+
