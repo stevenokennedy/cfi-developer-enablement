@@ -1,0 +1,7 @@
+source 'https://supermarket.chef.io'
+
+cookbook "mongodb"
+
+cookbook "browser", path: "../../cookbooks/browser"
+cookbook "ide", path: "../../cookbooks/ide"
+cookbook "npm", path: "../../cookbooks/npm"
