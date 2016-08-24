@@ -13,6 +13,7 @@
 			[
 				"yo",
 				"grunt-cli",
+				"gulp-cli",
 				"bower",
 				"mocha",
 				"jshint",
@@ -40,6 +41,7 @@
 	[
 		"recipe[npm::default]",
 		"recipe[ide::webstorm]",
-		"recipe[browser::chrome]"
+		"recipe[browser::chrome]",
+		"recipe[mongodb::default]"
 	]
 }
